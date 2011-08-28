@@ -30,5 +30,9 @@ def test_ticket_742():
         # shouldn't crash
         SE(a)
 
+def test_int64_max():
+    x = ndimage.shift(np.array([0, 1, 2], dtype=np.uint64) - 1, 0.5)
+    assert x[1] > (2**32 - 1)
+
 if __name__ == "__main__":
     run_module_suite()
